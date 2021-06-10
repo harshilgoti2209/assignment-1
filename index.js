@@ -27,7 +27,7 @@ let displayItems = [
 ];
 const applyBackgroundColor = (index) => {
     let element = document.getElementById(`${index}`);
-    element.style.backgroundColor = "rgb(19, 19, 233)";
+    element.style.backgroundColor = "rgb(53, 50, 243)";
     element.style.color = "blanchedalmond";
   };
   const removeBackgroundColor = (index) => {
