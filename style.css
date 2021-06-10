@@ -12,7 +12,7 @@
   justify-content: center;
 }
 .sidebar {
-  width: 19%;
+  width: 350px;
   overflow-y: auto;
 }
 .sidebar-item {
@@ -41,7 +41,7 @@
   object-fit: cover;
 }
 .image-box {
-  width: 37%;
+  width: 700px;
   margin-left: 20px;
 }
 .image-box > img {
