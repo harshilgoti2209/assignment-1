@@ -56,7 +56,11 @@ displayItems.forEach((item, index) => {
       alt="${item.title}"
       class="image-preview"
     />
-    <p class="image-name">${item.title}</p>
+    <div id="image-name-overflow" data-image-name="${
+      item.title.length > 25 ? item.title.slice(-8) : ""
+  }">
+  <p class="image-name">${item.title}</p>
+  </div>
     `;
   element.onclick = () => {
     removeBackgroundColor(currentImageIndex);

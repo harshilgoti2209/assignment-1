@@ -5,7 +5,7 @@
   font-family: 'Baloo Tammudu 2', cursive;
 }
 .container {
-  height: 100vh;
+  height: 98vh;
   padding: 3vh;
   display: flex;
   justify-content: center;
@@ -24,11 +24,8 @@
   cursor: pointer;
   user-select:none ;
 }
-.sidebar-item > p {
-  white-space: nowrap;
+.sidebar-item  > div > p {
   width: 100%;
-  overflow: hidden;
-  text-overflow:ellipsis;
   font-size: 19px;
 }
 .image-preview {
@@ -60,4 +57,24 @@
 .selected{
     background-color:rgb(53, 50, 243);
     color : blanchedalmond;
+}
+
+#image-name-overflow {
+  position: relative;
+  width: 180px;
+}
+
+#image-name-overflow p {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+#image-name-overflow:after {
+  content: attr(data-image-name);
+  position: absolute;
+  left: 100%;
+  top: 20px;
+  font-size: 19px;
+  font-family: "Baloo Tammudu 2", cursive;
 }
