@@ -21,6 +21,8 @@
   align-items: center;
   height: 7%;
   transition: background-color 0.2s;
+  cursor: pointer;
+  user-select:none ;
 }
 .sidebar-item > p {
   white-space: nowrap;
@@ -47,9 +49,15 @@
   border-radius: 7px;
   box-shadow: 3px 3px 3px rgba(22, 15, 15, 0.5),
     -3px -3px 3px rgba(22, 15, 15, 0.5);
+  
 }
+
 .image-box > p {
   text-align: center;
   font-size: 22px;
   color: rgb(80, 80, 80);
+}
+.selected{
+    background-color:rgb(53, 50, 243);
+    color : blanchedalmond;
 }

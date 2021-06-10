@@ -25,22 +25,30 @@ let displayItems = [
     title: "interns-performance-report-june-2021.key",
   },
 ];
+let currentImageIndex = 0;
+
 const applyBackgroundColor = (index) => {
-    let element = document.getElementById(`${index}`);
-    element.style.backgroundColor = "rgb(53, 50, 243)";
-    element.style.color = "blanchedalmond";
-  };
-  const removeBackgroundColor = (index) => {
-    let element = document.getElementById(`${index}`);
-    element.style.backgroundColor = "white";
-    element.style.color = "black";
-  };
-  
-var currentImageIndex = 0;
+  document.getElementById(`${index}`).classList.add("selected");
+};
+
+const removeBackgroundColor = (index) => {
+  document.getElementById(`${index}`).classList.remove("selected");
+};
+
+const displayImage = () => {
+  let element= document.querySelector(".image-box")
+
+  element.innerHTML=`
+       <img
+          src="${displayItems[currentImageIndex].previewImage}"
+          alt="${displayItems[currentImageIndex].title}"
+        />
+        <p id="imag-title">${displayItems[currentImageIndex].title}</p>`;
+};
 
 displayItems.forEach((item, index) => {
   element = document.createElement("div");
-  element.classList = "sidebar-item";
+  element.classList.add("sidebar-item");
   element.id = index;
   element.innerHTML = `
     <img
@@ -53,12 +61,7 @@ displayItems.forEach((item, index) => {
   element.onclick = () => {
     removeBackgroundColor(currentImageIndex);
     currentImageIndex = index;
-    document.querySelector(".image-box").innerHTML = `
-           <img
-              src="${item.previewImage}"
-              alt="${item.title}"
-            />
-            <p id="imag-title">${item.title}</p>`;
+    displayImage();
     applyBackgroundColor(currentImageIndex);
   };
   parent = document.querySelector(".sidebar");
@@ -66,34 +69,24 @@ displayItems.forEach((item, index) => {
 });
 
 if (displayItems.length != 0) {
-  document.querySelector(".image-box").innerHTML = `
-         <img
-            src="${displayItems[currentImageIndex].previewImage}"
-            alt="${displayItems[currentImageIndex].title}"
-          />
-          <p id="imag-title">${displayItems[currentImageIndex].title}</p>`;
+  displayImage();
   applyBackgroundColor(currentImageIndex);
 }
 
 document.onkeydown = function (event) {
   removeBackgroundColor(currentImageIndex);
+  
   var e = event || window.event;
-  if (e.keyCode == "38") {
-    //LEFT
+
+  if (e.keyCode == "38") { //LEFT KEY
     currentImageIndex = currentImageIndex > 0 ? currentImageIndex - 1 : 0;
-  } else if (e.keyCode == "40") {
-    //RIGHT
+  } else if (e.keyCode == "40") { //RIGHT KEY
     currentImageIndex =
       currentImageIndex < displayItems.length - 1
         ? currentImageIndex + 1
         : displayItems.length - 1;
   }
-  document.querySelector(".image-box").innerHTML = `
-       <img
-          src="${displayItems[currentImageIndex].previewImage}"
-          alt="${displayItems[currentImageIndex].title}"
-        />
-        <p id="imag-title">${displayItems[currentImageIndex].title}</p>`;
+
+  displayImage();
   applyBackgroundColor(currentImageIndex);
 };
-
