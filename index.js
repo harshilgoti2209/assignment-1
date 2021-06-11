@@ -26,6 +26,7 @@ let displayItems = [
   },
 ];
 let currentImageIndex = 0;
+let totalItems = displayItems.length;
 
 const applyBackgroundColor = (index) => {
   document.getElementById(`${index}`).classList.add("selected");
@@ -36,9 +37,9 @@ const removeBackgroundColor = (index) => {
 };
 
 const displayImage = () => {
-  let element= document.querySelector(".image-box")
+  let element = document.querySelector(".image-box");
 
-  element.innerHTML=`
+  element.innerHTML = `
        <img
           src="${displayItems[currentImageIndex].previewImage}"
           alt="${displayItems[currentImageIndex].title}"
@@ -50,41 +51,43 @@ displayItems.forEach((item, index) => {
   element = document.createElement("div");
   element.classList.add("sidebar-item");
   element.id = index;
+  
   element.innerHTML = `
     <img
       src="${item.previewImage}"
       alt="${item.title}"
       class="image-preview"
     />
-    <p>${ item.title} </p>
+    <p>${item.title} </p>
     `;
+
   element.onclick = () => {
     removeBackgroundColor(currentImageIndex);
     currentImageIndex = index;
     displayImage();
     applyBackgroundColor(currentImageIndex);
   };
+
   parent = document.querySelector(".sidebar");
   parent.appendChild(element);
-});
 
-if (displayItems.length != 0) {
-  displayImage();
-  applyBackgroundColor(currentImageIndex);
-}
+  if (index == 0) {
+    displayImage();
+    applyBackgroundColor(currentImageIndex);
+  }
+});
 
 document.onkeydown = function (event) {
   removeBackgroundColor(currentImageIndex);
-  
+
   var e = event || window.event;
 
-  if (e.keyCode == "38") { //LEFT KEY
-    currentImageIndex = currentImageIndex > 0 ? currentImageIndex - 1 : 0;
-  } else if (e.keyCode == "40") { //RIGHT KEY
-    currentImageIndex =
-      currentImageIndex < displayItems.length - 1
-        ? currentImageIndex + 1
-        : displayItems.length - 1;
+  if (e.keyCode == "38") {
+    //LEFT KEY
+    currentImageIndex = (currentImageIndex - 1 + totalItems) % totalItems;
+  } else if (e.keyCode == "40") {
+    //RIGHT KEY
+    currentImageIndex = (currentImageIndex + 1 + totalItems) % totalItems;
   }
 
   displayImage();

@@ -1,15 +1,14 @@
-* {
+*{
   box-sizing: border-box;
-  margin: 0 px;
-  padding: 0 px;
+  margin: 0px;
+  padding: 0px;
   font-family: "Baloo Tammudu 2", cursive;
 }
 .container {
-  height: 98vh;
-  padding: 3vh;
+  height: 100vh;
+  padding: 20px;
   display: flex;
-  justify-content: center;
-  
+  justify-content: center;  
 }
 .sidebar {
   width: 350px;
@@ -24,12 +23,10 @@
   align-items: center;
   transition: background-color 0.2s;
   cursor: pointer;
-  user-select: none;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .sidebar-item > p {
   white-space: nowrap;
-  width: 100%;
   font-size: 19px;
   overflow: hidden;
   text-overflow: ellipsis;
