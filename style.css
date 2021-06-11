@@ -6,9 +6,10 @@
 }
 .container {
   height: 98vh;
-  padding: 3vh;
+  padding: 3px;
   display: flex;
   justify-content: center;
+  
 }
 .sidebar {
   width: 350px;
@@ -24,6 +25,7 @@
   transition: background-color 0.2s;
   cursor: pointer;
   user-select: none;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .sidebar-item > p {
   white-space: nowrap;
@@ -42,6 +44,8 @@
 .image-box {
   width: 700px;
   margin-left: 20px;
+  display: flex;
+  flex-direction: column;
 }
 .image-box > img {
   width: 100%;
