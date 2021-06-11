@@ -1,4 +1,4 @@
-@media (max-width: 1080px) {
+@media (max-width: 900px) {
   .container {
     flex-direction: column;
     width: 100vw;
