@@ -28,27 +28,21 @@ let displayItems = [
 let currentImageIndex = 0;
 let totalItems = displayItems.length;
 
-const applyBackgroundColor = (index) => {
+const applyBackgroundColor = (index) =>
   document.getElementById(`${index}`).classList.add("selected");
-};
-
-const removeBackgroundColor = (index) => {
+const removeBackgroundColor = (index) =>
   document.getElementById(`${index}`).classList.remove("selected");
-};
 
 const displayImage = () => {
-  let element = document.querySelector(".image-box");
-
-  element.innerHTML = `
-       <img
-          src="${displayItems[currentImageIndex].previewImage}"
-          alt="${displayItems[currentImageIndex].title}"
-        />
-        <p id="imag-title">${displayItems[currentImageIndex].title}</p>`;
+  let imagePhoto = document.querySelector("#image-photo");
+  imagePhoto.src = displayItems[currentImageIndex].previewImage;
+  imagePhoto.alt = displayItems[currentImageIndex].title;
+  let imageTitle = document.querySelector("#image-title");
+  imageTitle.innerHTML = displayItems[currentImageIndex].title;
 };
 
 displayItems.forEach((item, index) => {
-  element = document.createElement("div");
+  let element = document.createElement("div");
   element.classList.add("sidebar-item");
   element.id = index;
 
@@ -68,10 +62,10 @@ displayItems.forEach((item, index) => {
     applyBackgroundColor(currentImageIndex);
   };
 
-  parent = document.querySelector(".sidebar");
+  let parent = document.querySelector(".sidebar");
   parent.appendChild(element);
 
-  if (index == 0) {
+  if (index === 0) {
     displayImage();
     applyBackgroundColor(currentImageIndex);
   }
@@ -82,10 +76,10 @@ document.onkeydown = function (event) {
 
   var e = event || window.event;
 
-  if (e.keyCode == "38") {
+  if (e.keyCode === 38) {
     //LEFT KEY
     currentImageIndex = (currentImageIndex - 1 + totalItems) % totalItems;
-  } else if (e.keyCode == "40") {
+  } else if (e.keyCode === 40) {
     //RIGHT KEY
     currentImageIndex = (currentImageIndex + 1 + totalItems) % totalItems;
   }
