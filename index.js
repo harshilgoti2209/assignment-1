@@ -51,7 +51,7 @@ displayItems.forEach((item, index) => {
   element = document.createElement("div");
   element.classList.add("sidebar-item");
   element.id = index;
-  
+
   element.innerHTML = `
     <img
       src="${item.previewImage}"
