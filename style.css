@@ -26,10 +26,14 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 .sidebar-item > p {
+  font-size: 18px;
   white-space: nowrap;
-  font-size: 19px;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+.sidebar-item > p:last-child{
+  text-overflow:clip;
+  direction: rtl;
 }
 .image-preview {
   width: 60px;

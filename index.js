@@ -17,7 +17,7 @@ let displayItems = [
   {
     previewImage:
       "https://images.unsplash.com/photo-1623206837956-07dab21608f6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-    title: "NextByk Investor Pitch 2021.ppt",
+    title: "NextByk InvestorPitch 2021.ppt",
   },
   {
     previewImage:
@@ -45,14 +45,14 @@ displayItems.forEach((item, index) => {
   let element = document.createElement("div");
   element.classList.add("sidebar-item");
   element.id = index;
-
+  let stringLength = item.title.length;
   element.innerHTML = `
     <img
       src="${item.previewImage}"
       alt="${item.title}"
       class="image-preview"
     />
-    <p>${item.title} </p>
+    <p>${item.title.slice(0, Math.max(0,stringLength-15))}</p><p>${item.title.slice(-15)}</p>
     `;
 
   element.onclick = () => {
