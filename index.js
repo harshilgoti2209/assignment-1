@@ -64,9 +64,7 @@ displayItems.forEach((item, index) => {
       alt="${item.title}"
       class="image-preview"
     />
-    <div class='item-name'>
       <p class='item-title'>${item.title} </p>
-    </div>
     `;
 
   element.onclick = () => {
