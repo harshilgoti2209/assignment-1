@@ -51,14 +51,14 @@ String.prototype.insertMiddleEllipsis = function () {
 };
 
 const fitImageName = () => {
-  let divWidth = document.querySelector(".item-name").offsetWidth;
+  let divWidth = document.querySelector(".item-name").clientWidth;
   let titleList = document.querySelectorAll(".item-title");
   titleList.forEach((item, index) => {
     let title = displayItems[index].title;
     item.textContent = title;
-    if (item.offsetWidth > divWidth) {
+    if (item.clientWidth > divWidth ) {
       item.textContent = title + "...";
-      while (item.clientWidth > divWidth) {
+      while (item.clientWidth > divWidth ) {
         title = title.cutMiddleChar();
         item.textContent = title + "...";
       }
@@ -99,8 +99,8 @@ displayItems.forEach((item, index) => {
   }
 });
 
-window.onload=fitImageName;
-window.onresize=fitImageName;
+window.onload = fitImageName;
+window.onresize = fitImageName;
 
 document.onkeydown = function (event) {
   removeBackgroundColor(currentImageIndex);

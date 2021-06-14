@@ -29,6 +29,7 @@
   width: 100%;
   white-space: nowrap;
   font-size: 18px;
+  padding-right: 10px;
 }
 .image-preview {
   width: 60px;
