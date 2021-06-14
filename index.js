@@ -99,10 +99,9 @@ displayItems.forEach((item, index) => {
   }
 });
 
-fitImageName();
-window.addEventListener("resize", () => {
-  fitImageName();
-});
+window.onload=fitImageName;
+window.onresize=fitImageName;
+
 document.onkeydown = function (event) {
   removeBackgroundColor(currentImageIndex);
 
