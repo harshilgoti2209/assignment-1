@@ -41,28 +41,14 @@ const displayImage = () => {
   imageTitle.innerHTML = displayItems[currentImageIndex].title;
 };
 
-String.prototype.cutMiddleChar = function () {
-  var charPosition = Math.floor(this.length / 2);
-  return this.substr(0, charPosition) + this.substr(charPosition + 1);
-};
-String.prototype.insertMiddleEllipsis = function () {
-  var charPosition = Math.floor(this.length / 2);
-  return this.substr(0, charPosition) + "..." + this.substr(charPosition);
-};
-
 const fitImageName = () => {
-  let divWidth = document.querySelector(".item-name").clientWidth;
   let titleList = document.querySelectorAll(".item-title");
   titleList.forEach((item, index) => {
     let title = displayItems[index].title;
     item.textContent = title;
-    if (item.clientWidth > divWidth ) {
-      item.textContent = title + "...";
-      while (item.clientWidth > divWidth ) {
-        title = title.cutMiddleChar();
-        item.textContent = title + "...";
-      }
-      item.textContent = title.insertMiddleEllipsis();
+    let maxLength = Math.floor((item.clientWidth / item.scrollWidth) * title.length) - 1;
+    if (item.scrollWidth > item.clientWidth) {
+      item.textContent = title.substr(0, maxLength / 2) + "..." + title.substr(-maxLength / 2);
     }
   });
 };
@@ -99,7 +85,7 @@ displayItems.forEach((item, index) => {
   }
 });
 
-fitImageName();
+window.onload = fitImageName;
 window.onresize = fitImageName;
 
 document.onkeydown = function (event) {
