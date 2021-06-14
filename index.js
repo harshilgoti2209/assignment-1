@@ -17,7 +17,7 @@ let displayItems = [
   {
     previewImage:
       "https://images.unsplash.com/photo-1623206837956-07dab21608f6?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80",
-    title: "NextByk InvestorPitch 2021.ppt",
+    title: "NextByk Investor Pitch 2021.ppt",
   },
   {
     previewImage:
@@ -41,6 +41,32 @@ const displayImage = () => {
   imageTitle.innerHTML = displayItems[currentImageIndex].title;
 };
 
+String.prototype.cutMiddleChar = function () {
+  var charPosition = Math.floor(this.length / 2);
+  return this.substr(0, charPosition) + this.substr(charPosition + 1);
+};
+String.prototype.insertMiddleEllipsis = function () {
+  var charPosition = Math.floor(this.length / 2);
+  return this.substr(0, charPosition) + "..." + this.substr(charPosition);
+};
+
+const fitImageName = () => {
+  let divWidth = document.querySelector(".item-name").offsetWidth;
+  let titleList = document.querySelectorAll(".item-title");
+  titleList.forEach((item, index) => {
+    let title = displayItems[index].title;
+    item.textContent = title;
+    if (item.offsetWidth > divWidth) {
+      item.textContent = title + "...";
+      while (item.clientWidth > divWidth) {
+        title = title.cutMiddleChar();
+        item.textContent = title + "...";
+      }
+      item.textContent = title.insertMiddleEllipsis();
+    }
+  });
+};
+
 displayItems.forEach((item, index) => {
   let element = document.createElement("div");
   element.classList.add("sidebar-item");
@@ -52,7 +78,9 @@ displayItems.forEach((item, index) => {
       alt="${item.title}"
       class="image-preview"
     />
-    <p>${item.title.slice(0, Math.max(0,stringLength-15))}</p><p>${item.title.slice(-15)}</p>
+    <div class='item-name'>
+      <p class='item-title'>${item.title} </p>
+    </div>
     `;
 
   element.onclick = () => {
@@ -71,11 +99,15 @@ displayItems.forEach((item, index) => {
   }
 });
 
+fitImageName();
+window.addEventListener("resize", () => {
+  fitImageName();
+});
 document.onkeydown = function (event) {
   removeBackgroundColor(currentImageIndex);
 
   var e = event || window.event;
-
+  e.preventDefault();
   if (e.keyCode === 38) {
     //LEFT KEY
     currentImageIndex = (currentImageIndex - 1 + totalItems) % totalItems;

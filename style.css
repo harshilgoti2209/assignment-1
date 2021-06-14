@@ -25,15 +25,10 @@
   cursor: pointer;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
-.sidebar-item > p {
-  font-size: 18px;
+.item-name {
+  width: 100%;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.sidebar-item > p:last-child{
-  text-overflow:clip;
-  direction: rtl;
+  font-size: 18px;
 }
 .image-preview {
   width: 60px;
