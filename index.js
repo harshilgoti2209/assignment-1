@@ -99,7 +99,7 @@ displayItems.forEach((item, index) => {
   }
 });
 
-window.onload = fitImageName;
+fitImageName();
 window.onresize = fitImageName;
 
 document.onkeydown = function (event) {
