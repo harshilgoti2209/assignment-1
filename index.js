@@ -83,7 +83,8 @@ displayItems.forEach((item, index) => {
   }
 });
 
-window.onload = fitImageName;
+document.onload = fitImageName;
+window.onload=fitImageName;
 window.onresize = fitImageName;
 
 document.onkeydown = function (event) {
